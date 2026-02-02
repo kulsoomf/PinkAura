@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuraLamps - Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Your Cart - AuraLamps</h1>
+    <a href="index.html">Back to Shop</a>
+  </header>
+
+  <main>
+    <div id="cartItems" class="products-grid"></div>
+    <h3 id="total"></h3>
+    <button onclick="checkout()">Checkout</button>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsDiv = document.getElementById("cartItems");
+
+    function displayCart() {
+      cartItemsDiv.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.image}" width="120">
+          <h4>${item.name}</h4>
+          <p>Price: $${item.price}</p>
+          <p>Category: ${item.category}</p>
+          <button onclick="removeItem('${item.id}')">Remove</button>
+        `;
+        cartItemsDiv.appendChild(div);
+        total += item.price;
+      });
+      document.getElementById("total").innerText = "Total: $" + total;
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    function checkout() {
+      if(cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+      }
+      alert("Thank you for your purchase!");
+      cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>
