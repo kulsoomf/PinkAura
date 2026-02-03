@@ -1,0 +1,225 @@
+[{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198ee"
+  },
+  "name": "Half Moon Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 35,
+  "image": "images/desk3.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198ef"
+  },
+  "name": "Flower Desk Lamp ",
+  "category": "Desk Lamps",
+  "price": 45,
+  "image": "images/desk4.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f0"
+  },
+  "name": "Moon Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 50,
+  "image": "images/desk2.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f1"
+  },
+  "name": "Aurora Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 40,
+  "image": "images/desk6.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f2"
+  },
+  "name": "PinkOrigin Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 38,
+  "image": "images/desk7.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f3"
+  },
+  "name": "Carcivore Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 42,
+  "image": "images/desk8.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f4"
+  },
+  "name": "Vintage Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 55,
+  "image": "images/desk9.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f5"
+  },
+  "name": "Smart Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 60,
+  "image": "images/desk10.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f6"
+  },
+  "name": "Crescent Desk Lamp",
+  "category": "Desk Lamps",
+  "price": 30,
+  "image": "images/desk12.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f7"
+  },
+  "name": "Standing Salt Lamp",
+  "category": "Floor Lamps",
+  "price": 55,
+  "image": "images/floor2.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f8"
+  },
+  "name": "Adjustable Floor Lamp",
+  "category": "Floor Lamps",
+  "price": 65,
+  "image": "images/floor3.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198f9"
+  },
+  "name": "Minimal Floor Lamp",
+  "category": "Floor Lamps",
+  "price": 50,
+  "image": "images/floor4.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198fa"
+  },
+  "name": "Vintage Floor Lamp",
+  "category": "Floor Lamps",
+  "price": 70,
+  "image": "images/floor7.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198fb"
+  },
+  "name": "VintageCoal Standing Lamp",
+  "category": "Floor Lamps",
+  "price": 60,
+  "image": "images/floor5.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198fc"
+  },
+  "name": "PinkSalt Diffuser",
+  "category": "Home & Living",
+  "price": 25,
+  "image": "images/home1.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198fd"
+  },
+  "name": "Candle Holder",
+  "category": "Home & Living",
+  "price": 30,
+  "image": "images/hl5.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198fe"
+  },
+  "name": "PinkSalt Bowl",
+  "category": "Home & Living",
+  "price": 15,
+  "image": "images/hl3.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be0198ff"
+  },
+  "name": "Candles GiftSet",
+  "category": "Home & Living",
+  "price": 30,
+  "image": "images/hl2.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019900"
+  },
+  "name": "PinkSalt Tealight Holder",
+  "category": "Home & Living",
+  "price": 45,
+  "image": "images/hl4.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019901"
+  },
+  "name": "Accent Vase",
+  "category": "Home & Living",
+  "price": 35,
+  "image": "images/hl7.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019902"
+  },
+  "name": "BathBombs",
+  "category": "Beauty & Personal Care",
+  "price": 40,
+  "image": "images/beauty1.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019903"
+  },
+  "name": "Personal Care Light Body Scrubber",
+  "category": "Beauty & Personal Care",
+  "price": 35,
+  "image": "images/bpc1.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019904"
+  },
+  "name": "Soap",
+  "category": "Beauty & Personal Care",
+  "price": 50,
+  "image": "images/bpc2.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019905"
+  },
+  "name": "Face Scrubber",
+  "category": "Beauty & Personal Care",
+  "price": 45,
+  "image": "images/bpc5.jpg"
+},
+{
+  "_id": {
+    "$oid": "698108bdd6185f43be019906"
+  },
+  "name": "Personal Care GiftSet",
+  "category": "Beauty & Personal Care",
+  "price": 55,
+  "image": "images/bpc6.jpg"
+}]

@@ -1,18 +1,22 @@
-// Fetch products
+const productsGrid = document.getElementById('productsGrid');
+let allProducts = [];
+
+// Fetch products from JSON
 async function fetchProducts() {
     try {
-        const res = await fetch("/products");
-        const data = await res.json();
-        allProducts = data;
+        const res = await fetch('/products');
+        allProducts = await res.json();
+        displayProducts(allProducts); // show all products initially
     } catch (err) {
-        console.error("Failed to fetch products:", err);
+        console.error('Failed to fetch products:', err);
+        productsGrid.innerHTML = "<p style='text-align:center; width:100%; margin-top:20px;'>Failed to load products.</p>";
     }
 }
 
 // Display products
 function displayProducts(products) {
-    productsGrid.innerHTML = "";
-    productsGrid.style.display = "flex"; // show products grid
+    productsGrid.innerHTML = '';
+    productsGrid.style.display = 'flex';
 
     if (products.length === 0) {
         productsGrid.innerHTML = "<p style='text-align:center; width:100%; margin-top:20px;'>No products found.</p>";
@@ -20,54 +24,30 @@ function displayProducts(products) {
     }
 
     products.forEach(product => {
-        const card = document.createElement("div");
-        card.classList.add("product");
-        card.innerHTML = `
+        const div = document.createElement('div');
+        div.classList.add('product');
+        div.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>$${product.price}</p>
             <button>Add to Cart</button>
         `;
-        productsGrid.appendChild(card);
-
-        if (product.category === "Customizable") {
-            card.querySelector("button").addEventListener("click", () => {
-                window.location.href = "/customize.html";
-            });
-        } else {
-            card.querySelector("button").addEventListener("click", () => {
-                addToCart(product); // <-- fixed: use single function
-            });
-        }
+        div.querySelector('button').addEventListener('click', () => addToCart(product));
+        productsGrid.appendChild(div);
     });
 }
 
-// Category card click
-const categoryCards = document.querySelectorAll(".category");
-categoryCards.forEach(card => {
-    card.addEventListener("click", () => {
+// Category click
+document.querySelectorAll('.category').forEach(card => {
+    card.addEventListener('click', () => {
         const category = card.dataset.category;
-
-        // Customize redirect
-        if (category === "Customizable") {
-            window.location.href = "/customize.html";
-            return;
-        }
-
         const filtered = allProducts.filter(p => p.category === category);
         displayProducts(filtered);
-
-        // Scroll to products
         window.scrollTo({ top: productsGrid.offsetTop, behavior: 'smooth' });
     });
 });
 
-// Initialize
-fetchProducts();
-
-// -------------------------
-// Cart functionality setup
-// -------------------------
+// Cart functionality
 let cart = [];
 const cartSidebar = document.getElementById('cartSidebar');
 const cartItemsEl = document.getElementById('cartItems');
@@ -80,83 +60,37 @@ const checkoutBtn = document.getElementById('checkoutBtn');
 cartIcon.addEventListener('click', () => cartSidebar.classList.add('open'));
 closeCartBtn.addEventListener('click', () => cartSidebar.classList.remove('open'));
 
-// -------------------------
-// Single addToCart function
-// -------------------------
 function addToCart(product) {
     const existing = cart.find(p => p.name === product.name);
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({...product, qty: 1});
-    }
+    if (existing) existing.qty += 1;
+    else cart.push({...product, qty: 1});
     updateCartDisplay();
-
-    // Open cart sidebar automatically
     cartSidebar.classList.add('open');
 }
 
-// Update cart display
 function updateCartDisplay() {
     cartItemsEl.innerHTML = '';
     let total = 0;
-
     cart.forEach(p => {
         const li = document.createElement('li');
-        li.classList.add('cart-item'); // add class for styling
-        li.innerHTML = `
-            <img src="${p.image}" alt="${p.name}" class="cart-item-img">
-            <div class="cart-item-info">
-                <h4>${p.name}</h4>
-                <p>Price: $${p.price}</p>
-                <p>Qty: ${p.qty}</p>
-                <p>Total: $${(p.price * p.qty).toFixed(2)}</p>
-            </div>
-        `;
+        li.textContent = `${p.name} x ${p.qty} - $${p.price * p.qty}`;
         cartItemsEl.appendChild(li);
         total += p.price * p.qty;
     });
-
-    cartTotalEl.textContent = `$${total.toFixed(2)}`;
+    cartTotalEl.textContent = `$${total}`;
     cartCountEl.textContent = cart.reduce((acc, p) => acc + p.qty, 0);
-
-    // Animate badge
-    cartCountEl.classList.add('cart-bump');
-    setTimeout(() => {
-        cartCountEl.classList.remove('cart-bump');
-    }, 200);
 }
 
-// Animate the badge
-cartCountEl.classList.add('cart-bump');
-setTimeout(() => {
-    cartCountEl.classList.remove('cart-bump');
-}, 200);
-
-
-// -------------------------
-// Top description fade-in & typing
-// -------------------------
-const topDesc = document.querySelector('.top-description');
-if(topDesc){
-    setTimeout(() => topDesc.classList.add('visible'), 100);
-
-    const subText = document.querySelector('.top-description .sub-text');
-    const message = "Light up your space, lift your mood, and add elegance to your home.";
-    let index = 0;
-    function type() {
-        if(index < message.length){
-            subText.textContent += message.charAt(index);
-            index++;
-            setTimeout(type, 50);
-        }
+checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
     }
-    setTimeout(type, 1200);
-}
+    alert("Thank you for your purchase!");
+    cart = [];
+    updateCartDisplay();
+    cartSidebar.classList.remove('open');
+});
 
-// -------------------------
-// DOM elements
-// -------------------------
-const productsGrid = document.getElementById("productsGrid");
-let allProducts = [];
-
+// Fetch products on page load
+window.addEventListener('DOMContentLoaded', fetchProducts);
