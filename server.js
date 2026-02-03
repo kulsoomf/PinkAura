@@ -4,27 +4,21 @@ const fs = require('fs');
 
 const app = express();
 
-// Serve static files from public folder
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route to fetch products from JSON file
+// Products route
 app.get('/products', (req, res) => {
     fs.readFile(path.join(__dirname, 'products.json'), 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Failed to read products');
-        }
-        const products = JSON.parse(data);
-        res.json(products);
+        if (err) return res.status(500).send('Failed to read products');
+        res.json(JSON.parse(data));
     });
 });
 
-// Fallback route to serve index.html
-app.get('*', (req, res) => {
+// Catch-all route for frontend routing
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
